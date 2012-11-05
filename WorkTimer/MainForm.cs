@@ -10,12 +10,12 @@ using System.IO;
 
 namespace WorkTimer
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
 
         public const int ScreenshotInterval = 5; //Measured in minutes
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }

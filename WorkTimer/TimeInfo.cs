@@ -58,7 +58,7 @@ namespace WorkTimer
             if (DateTime.Now > NextScreenshot)
             {
                 //take a screenshot
-                NextScreenshot = DateTime.Now + TimeSpan.FromMinutes(Form1.ScreenshotInterval);
+                NextScreenshot = DateTime.Now + TimeSpan.FromMinutes(MainForm.ScreenshotInterval);
                 TakeScreenshot();
             }
         }
