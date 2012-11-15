@@ -40,10 +40,11 @@
             this.timeUpdate = new System.Windows.Forms.Timer(this.components);
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTrayStartStop = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnTrayClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelTotalTime = new System.Windows.Forms.Label();
             this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,9 +83,9 @@
             // 
             // listPreviousSessions
             // 
-            this.listPreviousSessions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listPreviousSessions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.listPreviousSessions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -92,10 +93,11 @@
             this.listPreviousSessions.FullRowSelect = true;
             this.listPreviousSessions.Location = new System.Drawing.Point(9, 95);
             this.listPreviousSessions.Name = "listPreviousSessions";
-            this.listPreviousSessions.Size = new System.Drawing.Size(377, 96);
+            this.listPreviousSessions.Size = new System.Drawing.Size(377, 99);
             this.listPreviousSessions.TabIndex = 5;
             this.listPreviousSessions.UseCompatibleStateImageBehavior = false;
             this.listPreviousSessions.View = System.Windows.Forms.View.Details;
+            this.listPreviousSessions.SelectedIndexChanged += new System.EventHandler(this.listPreviousSessions_SelectedIndexChanged);
             this.listPreviousSessions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPreviousSessions_MouseDoubleClick);
             // 
             // columnHeader1
@@ -134,45 +136,56 @@
             this.toolStripSeparator1,
             this.btnTrayClose});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(153, 98);
+            this.trayMenu.Size = new System.Drawing.Size(114, 76);
+            // 
+            // restoreToolStripMenuItem
+            // 
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.restoreToolStripMenuItem.Text = "Restore";
+            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // btnTrayStartStop
             // 
             this.btnTrayStartStop.Name = "btnTrayStartStop";
-            this.btnTrayStartStop.Size = new System.Drawing.Size(152, 22);
+            this.btnTrayStartStop.Size = new System.Drawing.Size(113, 22);
             this.btnTrayStartStop.Text = "Start";
             this.btnTrayStartStop.Click += new System.EventHandler(this.btnTrayStartStop_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(110, 6);
             // 
             // btnTrayClose
             // 
             this.btnTrayClose.Name = "btnTrayClose";
-            this.btnTrayClose.Size = new System.Drawing.Size(152, 22);
+            this.btnTrayClose.Size = new System.Drawing.Size(113, 22);
             this.btnTrayClose.Text = "Close";
             this.btnTrayClose.Click += new System.EventHandler(this.btnTrayClose_Click);
             // 
-            // restoreToolStripMenuItem
+            // labelTotalTime
             // 
-            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.restoreToolStripMenuItem.Text = "Restore";
-            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
+            this.labelTotalTime.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelTotalTime.Location = new System.Drawing.Point(0, 197);
+            this.labelTotalTime.Name = "labelTotalTime";
+            this.labelTotalTime.Size = new System.Drawing.Size(398, 22);
+            this.labelTotalTime.TabIndex = 6;
+            this.labelTotalTime.Text = "Total Time: 00:00:00";
+            this.labelTotalTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 203);
+            this.ClientSize = new System.Drawing.Size(398, 219);
+            this.Controls.Add(this.labelTotalTime);
             this.Controls.Add(this.listPreviousSessions);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "GET BACK TO WORK";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -198,6 +211,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem btnTrayClose;
         private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
+        private System.Windows.Forms.Label labelTotalTime;
 
     }
 }
