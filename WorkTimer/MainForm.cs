@@ -43,6 +43,10 @@ namespace WorkTimer
                     string[] lines = File.ReadAllLines(dir + "/info.txt");
                     if (lines.Length < 2) return;
 
+                    string comments = "";
+                    if (lines.Length >= 3)
+                        comments = lines[2];
+
                     //Pull info from that file
                     DateTime start;
                     DateTime end;
@@ -57,6 +61,7 @@ namespace WorkTimer
                     item.Tag = (object)dir;
                     item.SubItems.Add(end.ToString());
                     item.SubItems.Add(span.ToString());
+                    item.SubItems.Add(comments);
                 }
             }
 
@@ -81,7 +86,7 @@ namespace WorkTimer
 
         private void Stop()
         {
-            if (TimeInfo.Folder == null || !TimeInfo.Folder.Exists || !TimeInfo.Running ) { return; }
+            if (TimeInfo.Folder == null || !TimeInfo.Folder.Exists || !TimeInfo.Running) { return; }
             TimeInfo.Stop();
             timeUpdate.Enabled = false;
 
@@ -96,13 +101,16 @@ namespace WorkTimer
                 StreamWriter sw = File.CreateText(TimeInfo.Folder + "/info.txt");
                 sw.WriteLine(TimeInfo.StartTime.ToString());
                 sw.WriteLine(DateTime.Now.ToString());
+                sw.WriteLine(textBoxCurrentComments.Text);
                 sw.Flush();
                 sw.Close();
             }
-            catch (Exception e )
+            catch (Exception e)
             {
                 MessageBox.Show("Failed to write info file. " + e.Message, "Work Timer - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            textBoxCurrentComments.Text = "Comments";
         }
 
 
@@ -169,11 +177,11 @@ namespace WorkTimer
 
         private void btnTrayStartStop_Click(object sender, EventArgs e)
         {
-            if (TimeInfo.Running) 
+            if (TimeInfo.Running)
                 Stop();
             else
                 Start();
-            
+
         }
 
         private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
