@@ -81,7 +81,7 @@ namespace WorkTimer
 
         private void Stop()
         {
-            if (TimeInfo.Folder == null || !TimeInfo.Folder.Exists) { return; }
+            if (TimeInfo.Folder == null || !TimeInfo.Folder.Exists || !TimeInfo.Running ) { return; }
             TimeInfo.Stop();
             timeUpdate.Enabled = false;
 
