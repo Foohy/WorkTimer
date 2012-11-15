@@ -45,6 +45,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnTrayClose = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTotalTime = new System.Windows.Forms.Label();
+            this.textBoxCurrentComments = new System.Windows.Forms.TextBox();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             // 
             this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(304, 53);
+            this.btnStop.Location = new System.Drawing.Point(374, 53);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(82, 36);
             this.btnStop.TabIndex = 2;
@@ -76,7 +78,7 @@
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTime.Location = new System.Drawing.Point(0, 0);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(398, 50);
+            this.labelTime.Size = new System.Drawing.Size(468, 50);
             this.labelTime.TabIndex = 3;
             this.labelTime.Text = "00:00:00";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -89,11 +91,12 @@
             this.listPreviousSessions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader4});
             this.listPreviousSessions.FullRowSelect = true;
             this.listPreviousSessions.Location = new System.Drawing.Point(9, 95);
             this.listPreviousSessions.Name = "listPreviousSessions";
-            this.listPreviousSessions.Size = new System.Drawing.Size(377, 99);
+            this.listPreviousSessions.Size = new System.Drawing.Size(447, 99);
             this.listPreviousSessions.TabIndex = 5;
             this.listPreviousSessions.UseCompatibleStateImageBehavior = false;
             this.listPreviousSessions.View = System.Windows.Forms.View.Details;
@@ -169,16 +172,30 @@
             this.labelTotalTime.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labelTotalTime.Location = new System.Drawing.Point(0, 197);
             this.labelTotalTime.Name = "labelTotalTime";
-            this.labelTotalTime.Size = new System.Drawing.Size(398, 22);
+            this.labelTotalTime.Size = new System.Drawing.Size(468, 22);
             this.labelTotalTime.TabIndex = 6;
             this.labelTotalTime.Text = "Total Time: 00:00:00";
             this.labelTotalTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxCurrentComments
+            // 
+            this.textBoxCurrentComments.Location = new System.Drawing.Point(181, 62);
+            this.textBoxCurrentComments.Name = "textBoxCurrentComments";
+            this.textBoxCurrentComments.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCurrentComments.TabIndex = 7;
+            this.textBoxCurrentComments.Text = "Comments";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Comments";
+            this.columnHeader4.Width = 86;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 219);
+            this.ClientSize = new System.Drawing.Size(468, 219);
+            this.Controls.Add(this.textBoxCurrentComments);
             this.Controls.Add(this.labelTotalTime);
             this.Controls.Add(this.listPreviousSessions);
             this.Controls.Add(this.labelTime);
@@ -192,6 +209,7 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.trayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -212,6 +230,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnTrayClose;
         private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
         private System.Windows.Forms.Label labelTotalTime;
+        private System.Windows.Forms.TextBox textBoxCurrentComments;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
 
     }
 }
