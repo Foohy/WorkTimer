@@ -34,6 +34,8 @@ namespace WorkTimer
             //Load any previous work sessions
             string[] dirs = Directory.GetDirectories(Environment.CurrentDirectory);
 
+            TimeSpan totalSpan = TimeSpan.Zero;
+
             foreach (string dir in dirs)
             {
                 if (File.Exists(dir + "/info.txt"))
@@ -47,12 +49,20 @@ namespace WorkTimer
 
                     if (!DateTime.TryParse(lines[0], out start) || !DateTime.TryParse(lines[1], out end)) { return; }
 
+                    TimeSpan span = end - start;
+
+                    totalSpan += span;
+
                     ListViewItem item = listPreviousSessions.Items.Insert(0, start.ToString());
                     item.Tag = (object)dir;
                     item.SubItems.Add(end.ToString());
-                    item.SubItems.Add((end - start).ToString());
+                    item.SubItems.Add(span.ToString());
                 }
             }
+
+            int seconds = (int)totalSpan.TotalSeconds;
+            double dollars = seconds * (1d / 360d);
+            labelTotalTime.Text = "Total Time: " + totalSpan.ToString() + " ($" + Math.Round(dollars, 2) + ")";
         }
 
         private void Start()
@@ -176,6 +186,11 @@ namespace WorkTimer
         {
             this.Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void listPreviousSessions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
